@@ -833,8 +833,8 @@ function buildRecs(checked, timestamps, calls) {
       // Expand canonical type to all matching roster unit types
       var matchTypes1a = {};
       if (stationType === 'Engine') {
-        // All engine-group roster types
-        matchTypes1a['Pumper']=true; matchTypes1a['Reserve Pumper']=true; matchTypes1a['Heavy Rescue Squad']=true;
+        // All engine-group roster types — Reserve Pumpers excluded (last-resort standby only)
+        matchTypes1a['Pumper']=true; matchTypes1a['Heavy Rescue Squad']=true;  
       } else if (stationType === 'Rescue') {
         // Rescue-capable roster types — squad can cover, pure engines cannot
         matchTypes1a['Technical Rescue']=true; matchTypes1a['Heavy Rescue Squad']=true;
