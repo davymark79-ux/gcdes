@@ -4284,7 +4284,17 @@ function CalllogTab(props) { var calls=props.calls,setCalls=props.setCalls,callF
                           aliasMap['EMS Rescue Medic '+rmNum] = bk;
                           aliasMap['ALS Rescue Medic '+rmNum] = bk;
                         }
-
+                        // EMS Supervisor: "EMS Sup 1" -> "EMS 01 Chief" / "EMS Chief 1" / "Greene County EMS 01 Chief"
+                        var emsSup = bk.match(/^EMS Sup (\d+)$/);
+                        if (emsSup && bu && bu.type === 'EMS Supervisor') {
+                          var esNum = parseInt(emsSup[1]);
+                          var esPad = ('0'+esNum).slice(-2);
+                          aliasMap['EMS '+esPad+' Chief'] = bk;
+                          aliasMap['EMS Chief '+esNum] = bk;
+                          aliasMap['EMS '+esNum+' Chief'] = bk;
+                          aliasMap['EMS Supervisor '+esNum] = bk;
+                          aliasMap['EMS Sup '+esNum] = bk;
+                        }
                         // ALS Ambulance: 01N/01O/03N etc -> "ALS Ambulance [id]" / "Medic [id]"
                         // Also handle by full ID already in builtUidMap
 
