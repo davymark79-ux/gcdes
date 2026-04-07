@@ -4297,6 +4297,17 @@ function CalllogTab(props) { var calls=props.calls,setCalls=props.setCalls,callF
                           }
                         }
 
+                        // Brush Fire Unit: "BFU 5" -> "Brush Fire Unit 5" / "Type 5 Engine 5"
+                        if (bu && (bu.type === 'Brush Fire Unit' || bu.unitId.match(/^BFU \d+$/))) {
+                          var _bfuM = bu.unitId.match(/^BFU (\d+)$/);
+                          if (_bfuM) {
+                            var _bfuNum = _bfuM[1];
+                            aliasMap['Brush Fire Unit '+_bfuNum] = bk;
+                            aliasMap['BFU '+_bfuNum] = bk;
+                            aliasMap['Type 5 Engine '+_bfuNum] = bk;
+                            aliasMap['Brush Fire '+_bfuNum] = bk;
+                          }
+                        }
                         // ALS Ambulance: 01N/01O/03N etc -> "ALS Ambulance [id]" / "Medic [id]"
                         // Also handle by full ID already in builtUidMap
 
