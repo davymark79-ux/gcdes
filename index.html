@@ -2908,6 +2908,46 @@ console.log('Boxes v5 loaded. Total: ' + GCDES_BOXES.length);
 })();
 
   </script>
+  <script>
+(function() {
+  function addStreets(boxId, streets) {
+    if (!window.GCDES_BOXES) return;
+    var box = null;
+    for (var i = 0; i < window.GCDES_BOXES.length; i++) {
+      if (window.GCDES_BOXES[i].id === boxId) { box = window.GCDES_BOXES[i]; break; }
+    }
+    if (!box) { console.warn('[v6] box not found:', boxId); return; }
+    for (var j = 0; j < streets.length; j++) {
+      var s = streets[j];
+      if (box.streets.indexOf(s) === -1) box.streets.push(s);
+    }
+  }
+  addStreets('0104', ['north jefferson avenue','south jefferson avenue','ny-23b','snake road','snake road extension','austin acres','brooks lane','country club est','country club ests','howard court','ivy terrace','james place','vosenkill road']);
+  addStreets('0121', ['north church street','debbie drive','van dyke street']);
+  addStreets('0122', ['brick row street','minerly lane']);
+  addStreets('0103', ['landon avenue','park avenue']);
+  addStreets('0116', ['black lake road','oak road','wolven road','riverview estate']);
+  addStreets('0102', ['wild wing park']);
+  addStreets('0201', ['meadow ridge lane','adams road','freleigh place','swartout road']);
+  addStreets('0231', ['spring valley road','ny-144']);
+  addStreets('0211', ['reservoir road','mansion street']);
+  addStreets('0301', ['town park road','haller lane']);
+  addStreets('0501', ['elizabeth terrace','sholz drive','silver spur road east','county road 41']);
+  addStreets('0411', ['lowerr lane','flats road','sutton road','carroll road']);
+  addStreets('0451', ['princess nauvoo road','camp meadowbrook road','long path']);
+  addStreets('0601', ['allen lane','pleasant view drive','lichtenstein drive','lake view avenue','candace road','goodrich lane','parker road','dibbles flats road']);
+  addStreets('0602', ['hemlock trail',"heiner's trail (blue)",'red ridge']);
+  addStreets('0901', ['acorn drive','carr road','silver spring road']);
+  addStreets('0661', ['fawn hill road','cangiano drive','morse road']);
+  addStreets('0701', ['mill street','chalet drive','carrington road','wits end','county road 21','bell hill road','sutton hollow road']);
+  addStreets('0702', ['galway road','west settlement road']);
+  addStreets('0721', ['west settlement road','campbell road']);
+  addStreets('0801', ['johnson hollow road','cartwright road','biegel road']);
+  addStreets('0241', ['county road 54']);
+  addStreets('0461', ['county road 39']);
+  addStreets('0261', ['reservoir road']);
+  console.log('[new_boxes_v6] Patch applied.');
+})();</script>
   <script type="text/babel" data-presets="react">
     const { useState, useEffect, useCallback, useMemo, useRef } = React;
 
